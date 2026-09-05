@@ -1,0 +1,15 @@
+/**
+ * SkipLink renders a skip-to-content link for keyboard accessibility.
+ *
+ * @stable Used by root layout. Provides first-focusable skip navigation target.
+ */
+export function SkipLink() {
+  return (
+    <a
+      href="#main-content"
+      className="fixed left-4 top-4 z-[9999] -translate-y-full rounded-full bg-zinc-900 px-4 py-2 text-sm font-medium text-white opacity-0 outline-none transition-all focus:translate-y-0 focus:opacity-100"
+    >
+      Skip to content
+    </a>
+  );
+}

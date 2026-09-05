@@ -1,0 +1,22 @@
+{
+  "common": {
+    "appName": "JJCET Alumni",
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "notFound": "Page not found"
+  },
+  "nav": {
+    "home": "Home",
+    "alumni": "Alumni",
+    "events": "Events",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "auth": {
+    "login": "Sign In",
+    "register": "Register",
+    "logout": "Sign Out",
+    "email": "Email",
+    "password": "Password"
+  }
+}

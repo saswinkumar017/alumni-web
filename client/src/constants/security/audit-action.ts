@@ -1,0 +1,28 @@
+export const AuditActions = [
+  "LOGIN_SUCCESS",
+  "LOGIN_FAILURE",
+  "LOGOUT",
+  "REGISTER",
+  "SESSION_REFRESH",
+  "SESSION_EXPIRED",
+  "PERMISSION_DENIED",
+  "AUTH_FAILURE",
+  "PROFILE_UPDATE",
+  "PROFILE_VIEW",
+  "EVENT_CREATE",
+  "EVENT_UPDATE",
+  "EVENT_DELETE",
+  "EVENT_VIEW",
+  "MESSAGE_SEND",
+  "MESSAGE_READ",
+  "JOB_APPLY",
+  "JOB_CREATE",
+  "ADMIN_ACTION",
+  "USER_CREATE",
+  "USER_UPDATE",
+  "USER_DELETE",
+  "CSRF_VIOLATION",
+  "CSP_VIOLATION",
+] as const;
+
+export type AuditAction = (typeof AuditActions)[number] | (string & {});

@@ -1,0 +1,26 @@
+onlyBuiltDependencies:
+  - "@parcel/watcher"
+  - "@sentry/cli"
+  - "@swc/core"
+  - core-js-pure
+  - esbuild
+  - sharp
+  - unrs-resolver
+minimumReleaseAgeExclude:
+  - "@biomejs/biome@2.5.3"
+  - "@biomejs/cli-darwin-arm64@2.5.3"
+  - "@biomejs/cli-darwin-x64@2.5.3"
+  - "@biomejs/cli-linux-arm64-musl@2.5.3"
+  - "@biomejs/cli-linux-arm64@2.5.3"
+  - "@biomejs/cli-linux-x64-musl@2.5.3"
+  - "@biomejs/cli-linux-x64@2.5.3"
+  - "@biomejs/cli-win32-arm64@2.5.3"
+  - "@biomejs/cli-win32-x64@2.5.3"
+allowBuilds:
+  "@parcel/watcher": set this to true or false
+  "@sentry/cli": set this to true or false
+  "@swc/core": set this to true or false
+  core-js-pure: set this to true or false
+  esbuild: set this to true or false
+  sharp: set this to true or false
+  unrs-resolver: set this to true or false
