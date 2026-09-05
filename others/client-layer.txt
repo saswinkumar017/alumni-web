@@ -1,0 +1,43 @@
+1. Environment Layer
+
+2. Routing Layer
+
+3. Layout Layer
+
+4. Page Layer
+
+5. Feature Layer
+
+6. Section Layer
+
+7. Feature Component Layer
+
+8. Shared Component Layer
+
+9. Styling Layer
+
+10. Type Layer
+
+11. Constants Layer
+
+12. Utility Layer
+
+13. Data/API Layer
+
+14. Hook Layer
+
+15. State Layer
+
+16. Security Layer
+
+17. Asset Layer
+
+18. Performance Layer
+
+19. Accessibility Layer
+
+20. Testing Layer
+
+21. Deployment Layer
+
+22. Monitoring & Observability Layer

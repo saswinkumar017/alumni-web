@@ -1,0 +1,12 @@
+package com.alumniweb.alumniweb.model.enums;
+
+public enum EmailTemplateType {
+    ACCOUNT_VERIFICATION,
+    OTP_VERIFICATION,
+    EMAIL_CORRECTION_APPROVED,
+    EMAIL_CORRECTION_REJECTED,
+    NEW_ALUMNI_APPROVED,
+    NEW_ALUMNI_REJECTED,
+    PASSWORD_RESET,
+    WELCOME
+}

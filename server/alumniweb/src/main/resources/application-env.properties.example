@@ -1,0 +1,17 @@
+# Local secrets - DO NOT COMMIT. Loaded only when profile "env" is active.
+# Activate with: SPRING_PROFILES_ACTIVE=env (or -Dspring.profiles.active=env)
+#
+# Copy this file to application-env.properties and fill in your real values.
+
+DB_URL=jdbc:mysql://localhost:3306/alumniweb
+DB_USERNAME=root
+DB_PASSWORD=change-me
+
+# JWT_SECRET must be a base64-encoded 512-bit key (generate with: openssl rand -base64 64)
+JWT_SECRET=change-me
+
+MAIL_USERNAME=change-me
+MAIL_PASSWORD=change-me
+
+# Comma-separated list of allowed CORS origins (optional; defaults to local dev origins)
+CORS_ALLOWED_ORIGINS=http://localhost:3000,http://localhost:5173,http://localhost:8080

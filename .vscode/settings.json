@@ -1,0 +1,7 @@
+{
+  "java.configuration.updateBuildConfiguration": "disabled",
+  "java.autobuild.enabled": false,
+  "files.watcherExclude": {
+    "**/server/alumniweb/target/**": true
+  }
+}

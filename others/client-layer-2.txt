@@ -1,0 +1,129 @@
+Stage 0
+──────────────
+Project Foundation
+
+↓
+
+Stage 1
+──────────────
+Environment Layer
+
+↓
+
+Stage 2
+──────────────
+Routing Layer
+
+↓
+
+Stage 3
+──────────────
+Layout Layer
+
+↓
+
+Stage 4
+──────────────
+Page Layer
+
+↓
+
+Stage 5
+──────────────
+Feature Layer
+
+↓
+
+Stage 6
+──────────────
+Section Layer
+
+↓
+
+Stage 7
+──────────────
+Feature Component Layer
+
+↓
+
+Stage 8
+──────────────
+Styling Layer
+
+↓
+
+Stage 9
+──────────────
+Shared Component Layer
+
+↓
+
+Stage 10
+──────────────
+Types
+
+↓
+
+Stage 11
+──────────────
+Constants
+
+↓
+
+Stage 12
+──────────────
+Utilities
+
+↓
+
+Stage 13
+──────────────
+Data/API Layer
+
+↓
+
+Stage 14
+──────────────
+Hooks
+
+↓
+
+Stage 15
+──────────────
+State Layer
+
+↓
+
+Stage 16
+──────────────
+Security Layer
+
+↓
+
+Stage 17
+──────────────
+Performance Layer
+
+↓
+
+Stage 18
+──────────────
+Accessibility Layer
+
+↓
+
+Stage 19
+──────────────
+Testing Layer
+
+↓
+
+Stage 20
+──────────────
+Deployment
+
+↓
+
+Stage 21
+──────────────
+Monitoring

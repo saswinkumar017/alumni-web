@@ -1,0 +1,610 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link [ref=e7] [cursor=pointer]:
+        - /url: https://alumni.jjcet.ac.in
+      - generic [ref=e8]:
+        - navigation "Menu" [ref=e11]:
+          - list [ref=e12]:
+            - listitem [ref=e13]:
+              - link "Home" [ref=e14] [cursor=pointer]:
+                - /url: https://alumni.jjcet.ac.in/
+            - listitem [ref=e15]:
+              - link "About Us" [ref=e16] [cursor=pointer]:
+                - /url: https://alumni.jjcet.ac.in/about/
+            - listitem [ref=e17]:
+              - link "Distinguished Alumni" [ref=e18] [cursor=pointer]:
+                - /url: https://alumni.jjcet.ac.in/distinguished-alumni/
+            - listitem [ref=e19]:
+              - link "Register" [ref=e20] [cursor=pointer]:
+                - /url: /register
+            - listitem [ref=e21]:
+              - link "Feedback" [ref=e22] [cursor=pointer]:
+                - /url: https://alumni.jjcet.ac.in/survey-and-feedback/
+            - listitem [ref=e23]:
+              - link "Contact Us" [ref=e24] [cursor=pointer]:
+                - /url: https://alumni.jjcet.ac.in/contact-us/
+        - search [ref=e27]:
+          - generic [ref=e28]:
+            - button "Search" [ref=e29] [cursor=pointer]:
+              - generic [ref=e30]: 
+            - generic:
+              - generic: Search
+              - searchbox "Search"
+              - text: 
+        - link "Login" [ref=e34] [cursor=pointer]:
+          - /url: /register?login
+    - text:   
+  - generic [ref=e37]:
+    - region "Slides" [ref=e42]:
+      - group [ref=e44]:
+        - link "Welcome to the Alumni Portal of JJCET! At JJCET, our commitment to fostering a vibrant and supportive community extends far beyond graduation. The Alumni Portal is designed to be a central hub where our distinguished graduates can connect, collaborate, and continue to grow together. Register Now" [ref=e47] [cursor=pointer]:
+          - /url: /register
+          - generic [ref=e48]:
+            - generic [ref=e49]: Welcome to the Alumni Portal of JJCET!
+            - generic [ref=e50]: At JJCET, our commitment to fostering a vibrant and supportive community extends far beyond graduation. The Alumni Portal is designed to be a central hub where our distinguished graduates can connect, collaborate, and continue to grow together.
+            - generic [ref=e51]: Register Now
+    - generic [ref=e53]:
+      - paragraph [ref=e56]: About Us
+      - heading "Alumni Community" [level=2] [ref=e59]
+      - paragraph [ref=e62]: The core purpose of the Alumni Association is to maintain and strengthen the bond between our alumni and the College. We are committed to supporting our graduates as they navigate their careers, celebrate their achievements and give back to the community that helped shape their futures.
+      - link "More About Us" [ref=e66] [cursor=pointer]:
+        - /url: https://alumni.jjcet.ac.in/about/
+    - generic [ref=e72]:
+      - generic [ref=e73]:
+        - paragraph [ref=e76]: Connect, Engage, and Thrive
+        - heading "Why Join Our Alumni Community?" [level=2] [ref=e79]
+        - generic [ref=e81]:
+          - paragraph [ref=e82]: "Joining the JJCET Alumni Portal opens up a world of opportunities and benefits that enhance your connection with your alma mater and fellow graduates. Here’s why you should become an active member of our vibrant alumni network:"
+          - paragraph [ref=e83]: Join us on the JJCET Alumni Portal and be part of a thriving network that continues to grow and evolve. Your connection with JJCET doesn’t end at graduation; it’s a lifelong journey of opportunities, growth, and mutual friendship. We look forward to welcoming you back and seeing the incredible ways you’ll contribute to our alumni community!
+        - link "Join Community" [ref=e87] [cursor=pointer]:
+          - /url: /register
+      - generic [ref=e90]:
+        - generic [ref=e107]:
+          - heading "Strengthen Your Network" [level=3] [ref=e108]
+          - paragraph [ref=e109]: Build lasting connections with fellow alumni and industry leaders.
+        - generic [ref=e121]:
+          - heading "Access Career Resources" [level=3] [ref=e122]
+          - paragraph [ref=e123]: Unlock tools and opportunities to advance your professional journey.
+        - generic [ref=e139]:
+          - heading "Stay Informed and Engaged" [level=3] [ref=e140]
+          - paragraph [ref=e141]: Keep up-to-date with the latest news, events, and developments in your field.
+        - generic [ref=e175]:
+          - heading "Participate in Exclusive Events" [level=3] [ref=e176]
+          - paragraph [ref=e177]: Join unique gatherings and experiences designed just for our alumni community.
+        - generic [ref=e185]:
+          - heading "Give Back and Make an Impact" [level=3] [ref=e186]
+          - paragraph [ref=e187]: Contribute your time and expertise to support future generations.
+        - generic [ref=e200]:
+          - heading "Enhance Your Personal Growth" [level=3] [ref=e201]
+          - paragraph [ref=e202]: Access to the college library, research publications, and more
+    - generic [ref=e203]:
+      - generic [ref=e204]:
+        - heading "Latest News & Events" [level=2] [ref=e207]
+        - paragraph [ref=e210]: Discover the latest updates and upcoming events from the JJCET Alumni Network. Stay connected with what’s happening in our community, from inspiring news to exciting gatherings and professional opportunities
+        - link "View Events" [ref=e214] [cursor=pointer]:
+          - /url: "#"
+      - generic [ref=e220]:
+        - generic [ref=e227]:
+          - heading [level=3] [ref=e230]:
+            - link "Alumni Interaction Session on 05.08.2026" [ref=e231] [cursor=pointer]:
+              - /url: https://alumni.jjcet.ac.in/event/alumni-interaction-session-on-05-08-2026/
+          - generic [ref=e232]: August 5, 2026
+          - generic [ref=e234]: 
+        - generic [ref=e245]:
+          - heading [level=3] [ref=e248]:
+            - link "Alumni Interaction Program on 11.07.2026" [ref=e249] [cursor=pointer]:
+              - /url: https://alumni.jjcet.ac.in/event/alumni-interaction-program-on-11-07-2026/
+          - generic [ref=e250]: July 11, 2026
+          - generic [ref=e252]: 
+        - generic [ref=e263]:
+          - heading [level=3] [ref=e266]:
+            - link "Alumni Interaction Programme for Students career guidance" [ref=e267] [cursor=pointer]:
+              - /url: https://alumni.jjcet.ac.in/event/alumni-interaction-programme-for-students-career-guidance/
+          - generic [ref=e268]: July 18, 2026
+          - generic [ref=e270]: 
+        - generic [ref=e281]:
+          - heading [level=3] [ref=e284]:
+            - link "JJCET 2001 ALUMNI SILVER JUBILEE FUNCTION" [ref=e285] [cursor=pointer]:
+              - /url: https://alumni.jjcet.ac.in/event/2001-batch-alumni-meet-successfully-conducted/
+          - generic [ref=e286]: July 18, 2026
+          - generic [ref=e288]: 
+    - generic [ref=e294]:
+      - heading "Gallery" [level=2] [ref=e297]
+      - paragraph [ref=e304]: Explore our vibrant collection of photos capturing the essence of JJ College of Engineering and Technology. From memorable events and milestones to everyday moments of campus life, our gallery showcases the journey and achievements of our alumni. Relive the pride, joy, and camaraderie that define our community.
+      - generic [ref=e307]:
+        - link [ref=e308] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2024/11/jjcet-alumni-visite-sivakarthikey-9.webp
+        - link [ref=e311] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2024/11/jjcet-alumni-visite-sivakarthikey-1.webp
+        - link [ref=e314] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2024/11/jjcet-alumni-visite-sivakarthikey-7.webp
+        - link [ref=e317] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2024/11/jjcet-alumni-visite-sivakarthikey-8.webp
+        - link [ref=e320] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2024/11/jjcet-alumni-visite-sivakarthikey-5.webp
+        - link [ref=e323] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2024/11/jjcet-alumni-visite-sivakarthikey-3.webp
+        - link [ref=e326] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2024/11/jjcet-alumni-visite-sivakarthikey-4.webp
+        - link [ref=e329] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2024/11/jjcet-alumni-visite-sivakarthikey-6.webp
+        - link [ref=e332] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2024/11/jjcet-alumni-visite-sivakarthikey-2.webp
+      - generic [ref=e338]:
+        - figure [ref=e339]:
+          - link [ref=e341] [cursor=pointer]:
+            - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2024/11/jjcet-alumni-visite-sivakarthikey-9.webp
+        - figure [ref=e342]:
+          - link [ref=e344] [cursor=pointer]:
+            - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2024/11/jjcet-alumni-visite-sivakarthikey-1.webp
+        - figure [ref=e345]:
+          - link [ref=e347] [cursor=pointer]:
+            - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2024/11/jjcet-alumni-visite-sivakarthikey-7.webp
+        - figure [ref=e348]:
+          - link [ref=e350] [cursor=pointer]:
+            - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2024/11/jjcet-alumni-visite-sivakarthikey-8.webp
+        - figure [ref=e351]:
+          - link [ref=e353] [cursor=pointer]:
+            - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2024/11/jjcet-alumni-visite-sivakarthikey-5.webp
+        - figure [ref=e354]:
+          - link [ref=e356] [cursor=pointer]:
+            - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2024/11/jjcet-alumni-visite-sivakarthikey-3.webp
+        - figure [ref=e357]:
+          - link [ref=e359] [cursor=pointer]:
+            - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2024/11/jjcet-alumni-visite-sivakarthikey-4.webp
+        - figure [ref=e360]:
+          - link [ref=e362] [cursor=pointer]:
+            - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2024/11/jjcet-alumni-visite-sivakarthikey-6.webp
+        - figure [ref=e363]:
+          - link [ref=e365] [cursor=pointer]:
+            - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2024/11/jjcet-alumni-visite-sivakarthikey-2.webp
+        - figure [ref=e366]:
+          - link [ref=e368] [cursor=pointer]:
+            - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2025/03/JJCET-Alumni-Association-2.webp
+        - figure [ref=e369]:
+          - link [ref=e371] [cursor=pointer]:
+            - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2025/03/JJCET-Alumni-Association-1.webp
+        - figure [ref=e372]:
+          - link [ref=e374] [cursor=pointer]:
+            - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2025/03/JJCET-Alumni-Association-8.webp
+        - figure [ref=e375]:
+          - link [ref=e377] [cursor=pointer]:
+            - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2025/03/JJCET-Alumni-Association-7.webp
+        - figure [ref=e378]:
+          - link [ref=e380] [cursor=pointer]:
+            - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2025/03/JJCET-Alumni-Association-6.webp
+        - figure [ref=e381]:
+          - link [ref=e383] [cursor=pointer]:
+            - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2025/03/JJCET-Alumni-Association-5.webp
+        - figure [ref=e384]:
+          - link [ref=e386] [cursor=pointer]:
+            - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2025/03/JJCET-Alumni-Association-4.webp
+        - figure [ref=e387]:
+          - link [ref=e389] [cursor=pointer]:
+            - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2025/03/JJCET-Alumni-Association-3.webp
+      - generic [ref=e392]:
+        - link [ref=e393] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2026/07/alumni-1.jpg
+        - link [ref=e396] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2026/07/Aarambh-image-2.jpg
+        - link [ref=e399] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2026/07/Aarambh-8.jpg
+        - link [ref=e402] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2026/07/Aarambh-image-3.jpg
+        - link [ref=e405] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2026/07/Aarambh-image-4.jpg
+        - link [ref=e408] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2026/07/Aarambh-image-6.jpg
+        - link [ref=e411] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2026/07/Aarambh-image-5.jpg
+        - link [ref=e414] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2026/07/Aarambh-image-7.jpg
+      - generic [ref=e419]:
+        - link [ref=e420] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2026/07/1.-Alumni.jpeg
+        - link [ref=e423] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2026/07/2.-Alumni.jpeg
+        - link [ref=e426] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2026/07/3.-Alumni.jpeg
+        - link [ref=e429] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2026/07/4.-Alumni.jpeg
+        - link [ref=e432] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2026/07/5.-Alumni.jpeg
+        - link [ref=e435] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2026/07/6.-Alumni.jpeg
+        - link [ref=e438] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2026/07/7.-Alumni.jpeg
+        - link [ref=e441] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2026/07/8.-Alumni.jpeg
+        - link [ref=e444] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2026/07/9.-Alumni.jpeg
+        - link [ref=e447] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2026/07/10.-Alumni.jpeg
+        - link [ref=e450] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2026/07/11.-Alumni.jpeg
+        - link [ref=e453] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2026/07/12.-Alumni.jpeg
+      - generic [ref=e459]:
+        - link [ref=e460] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2026/07/alumni-website-1.jpeg
+        - link [ref=e463] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2026/07/Silver-jubilee-1.jpg
+        - link [ref=e466] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2026/07/Silver-jubilee-2.jpg
+        - link [ref=e469] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2026/07/silver-jubilee-3.jpg
+        - link [ref=e472] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2026/07/Silver-jubilee-4.jpg
+        - link [ref=e475] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2026/07/Silver-jubilee-5.jpg
+        - link [ref=e478] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2026/07/Silver-jubilee-6.jpg
+        - link [ref=e481] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2026/07/Silver-jubilee-7.jpg
+        - link [ref=e484] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2026/07/Silver-jubilee-8.jpg
+        - link [ref=e487] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2026/07/Silver-jubilee-9.jpg
+        - link [ref=e490] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2026/07/interaction-1.jpg
+        - link [ref=e493] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2026/07/interaction-2.jpg
+        - link [ref=e496] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2026/07/4-1.jpg
+        - link [ref=e499] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2026/07/5-1.jpg
+        - link [ref=e502] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in/wp-content/uploads/2026/07/7-1-scaled.jpg
+    - generic [ref=e507]:
+      - heading "Alumni Meet" [level=2] [ref=e510]
+      - region "Carousel" [ref=e513]:
+        - generic [ref=e514]:
+          - group "1 / 2" [ref=e515]:
+            - iframe [ref=e521]:
+              - generic [ref=f1e1]:
+                - generic "YouTube Video Player" [ref=f1e3]
+                - generic [ref=f1e5]:
+                  - generic:
+                    - generic:
+                      - generic [ref=f1e6] [cursor=pointer]
+                      - button "Play video" [ref=f1e10] [cursor=pointer]
+                      - button "Hide player controls" [ref=f1e12] [cursor=pointer]
+                      - generic [ref=f1e14]:
+                        - generic [ref=f1e19]:
+                          - generic [ref=f1e20]:
+                            - link "Installation Ceremony of JJCET Alumni Association Team 2025" [ref=f1e21] [cursor=pointer]:
+                              - /url: https://www.youtube.com/watch?v=prXeWnESg70
+                            - link "JJ College of Engineering and Technology" [ref=f1e22] [cursor=pointer]:
+                              - /url: /channel/UC2_ZgOQ0rROrTdC7CDWRUfA
+                          - generic [ref=f1e24]:
+                            - button [ref=f1e25] [cursor=pointer]
+                            - generic [ref=f1e27]:
+                              - generic: JJ College of Engineering and Technology
+                              - generic: 1.7K subscribers
+                        - generic [ref=f1e28]:
+                          - button "Share" [ref=f1e31] [cursor=pointer]
+                          - link "Watch on YouTube" [ref=f1e42] [cursor=pointer]:
+                            - /url: https://www.youtube.com/watch?v=prXeWnESg70
+                            - generic [ref=f1e43]: Watch on
+          - group "2 / 2" [ref=e522]:
+            - iframe [ref=e528]:
+              - generic [ref=f2e1]:
+                - generic "YouTube Video Player" [ref=f2e3]
+                - generic [ref=f2e5]:
+                  - generic:
+                    - generic:
+                      - generic [ref=f2e6] [cursor=pointer]
+                      - button "Play video" [ref=f2e10] [cursor=pointer]
+                      - button "Hide player controls" [ref=f2e12] [cursor=pointer]
+                      - generic [ref=f2e14]:
+                        - generic [ref=f2e19]:
+                          - generic [ref=f2e20]:
+                            - link "VC Sir Speech- Actor SIVA Function" [ref=f2e21] [cursor=pointer]:
+                              - /url: https://www.youtube.com/watch?v=G3Kb28UQuaU
+                            - link "JJ College of Engineering and Technology" [ref=f2e22] [cursor=pointer]:
+                              - /url: /channel/UC2_ZgOQ0rROrTdC7CDWRUfA
+                          - generic [ref=f2e24]:
+                            - button [ref=f2e25] [cursor=pointer]
+                            - generic [ref=f2e27]:
+                              - generic: JJ College of Engineering and Technology
+                              - generic: 1.7K subscribers
+                        - generic [ref=f2e28]:
+                          - button "Share" [ref=f2e31] [cursor=pointer]
+                          - link "Watch on YouTube" [ref=f2e42] [cursor=pointer]:
+                            - /url: https://www.youtube.com/watch?v=G3Kb28UQuaU
+                            - generic [ref=f2e43]: Watch on
+    - generic [ref=e530]:
+      - heading "Our Prominent Alumni" [level=3] [ref=e533]
+      - generic [ref=e535]:
+        - region "Carousel" [ref=e536]:
+          - generic [ref=e537]:
+            - group [ref=e538]:
+              - generic [ref=e543]:
+                - figure [ref=e544]
+                - generic [ref=e545]:
+                  - heading [level=3] [ref=e546]: Dhibu Ninan Thomas
+                  - paragraph [ref=e547]: CSE Music Director, Chennai
+            - group [ref=e548]:
+              - generic [ref=e553]:
+                - figure [ref=e554]
+                - generic [ref=e555]:
+                  - heading [level=3] [ref=e556]: Thoufiq Ahamed
+                  - paragraph [ref=e557]: E & I Fire Safety Engineer Hamad Medical Corporation, Qatar
+            - group [ref=e558]:
+              - generic [ref=e563]:
+                - figure [ref=e564]
+                - generic [ref=e565]:
+                  - heading [level=3] [ref=e566]: Rajkumar
+                  - paragraph [ref=e567]: MECH Design and Programmer Intra-Mold Co, Ltd, Thailand
+            - group [ref=e568]:
+              - generic [ref=e573]:
+                - figure [ref=e574]
+                - generic [ref=e575]:
+                  - heading [level=3] [ref=e576]: Karthikeyan
+                  - paragraph [ref=e577]: CIVIL Managing Partner, GMS Consultancy, Chennai
+            - group [ref=e578]:
+              - generic [ref=e583]:
+                - figure [ref=e584]
+                - generic [ref=e585]:
+                  - heading [level=3] [ref=e586]: Santhosh
+                  - paragraph [ref=e587]: Deputy Collector (Trainee) Thiruvannamalai District
+            - group "1 / 22" [ref=e588]:
+              - generic [ref=e593]:
+                - figure [ref=e594]
+                - generic [ref=e595]:
+                  - heading "Dr. Shimi Haridasan" [level=3] [ref=e596]
+                  - paragraph [ref=e597]: Professor, Electrical Engineering, Punjab Engineering College - Punjab
+            - group "2 / 22" [ref=e598]:
+              - generic [ref=e603]:
+                - figure [ref=e604]
+                - generic [ref=e605]:
+                  - heading "Chandru" [level=3] [ref=e606]
+                  - paragraph [ref=e607]: CEO & Founder of TechnoRUCS
+            - group "3 / 22" [ref=e608]:
+              - generic [ref=e613]:
+                - figure [ref=e614]
+                - generic [ref=e615]:
+                  - heading "Joseph Christopher Xavie" [level=3] [ref=e616]
+                  - paragraph [ref=e617]: CEO – Nishanthini Academy and Nishanthini HR Services, Coimbatore
+            - group "4 / 22" [ref=e618]:
+              - generic [ref=e623]:
+                - figure [ref=e624]
+                - generic [ref=e625]:
+                  - heading "Arja Anil Das" [level=3] [ref=e626]
+                  - paragraph [ref=e627]: Activity Co-ordinator, Santa Health Care, Harrow City, London UK
+            - group "5 / 22" [ref=e628]:
+              - generic [ref=e633]:
+                - figure [ref=e634]
+                - generic [ref=e635]:
+                  - heading "Nishantini IPS" [level=3] [ref=e636]
+                  - paragraph [ref=e637]: DIG
+            - group [ref=e638]:
+              - generic [ref=e643]:
+                - figure [ref=e644]
+                - generic [ref=e645]:
+                  - heading [level=3] [ref=e646]: Sumaya Shakir
+                  - paragraph [ref=e647]: CIO - IT Innovation
+            - group [ref=e648]:
+              - generic [ref=e653]:
+                - figure [ref=e654]
+                - generic [ref=e655]:
+                  - heading [level=3] [ref=e656]: Dr. N. Siva Shanmugam
+                  - paragraph [ref=e657]: Professor, Mechanical Engg, NIT - Trichy
+            - group [ref=e658]:
+              - generic [ref=e663]:
+                - figure [ref=e664]
+                - generic [ref=e665]:
+                  - heading [level=3] [ref=e666]: S. Maheshwaran
+                  - paragraph [ref=e667]: AVP - Bank of America
+            - group [ref=e668]:
+              - generic [ref=e673]:
+                - figure [ref=e674]
+                - generic [ref=e675]:
+                  - heading [level=3] [ref=e676]: Karthik
+                  - paragraph [ref=e677]: Scientist - ISRO
+            - group [ref=e678]:
+              - generic [ref=e683]:
+                - figure [ref=e684]
+                - generic [ref=e685]:
+                  - heading [level=3] [ref=e686]: Anandha Murugan
+                  - paragraph [ref=e687]: Scientist - DRDO
+            - group [ref=e688]:
+              - generic [ref=e693]:
+                - figure [ref=e694]
+                - generic [ref=e695]:
+                  - heading [level=3] [ref=e696]: Arun Ramachandran
+                  - paragraph [ref=e697]: CEO & Founder, DEFI Technologies, Dubai, UAE
+            - group [ref=e698]:
+              - generic [ref=e703]:
+                - figure [ref=e704]
+                - generic [ref=e705]:
+                  - heading [level=3] [ref=e706]: Sangeeth Kumar
+                  - paragraph [ref=e707]: Co-Founder, Director, Corvid System LLP, Bangalore
+            - group [ref=e708]:
+              - generic [ref=e713]:
+                - figure [ref=e714]
+                - generic [ref=e715]:
+                  - heading [level=3] [ref=e716]: Santhosh Narayanan
+                  - paragraph [ref=e717]: CSE Music Director, Chennai
+            - group [ref=e718]:
+              - generic [ref=e723]:
+                - figure [ref=e724]
+                - generic [ref=e725]:
+                  - heading [level=3] [ref=e726]: Muthamil
+                  - paragraph [ref=e727]: MECH, Lyricist, Chennai
+            - group [ref=e728]:
+              - generic [ref=e733]:
+                - figure [ref=e734]
+                - generic [ref=e735]:
+                  - heading [level=3] [ref=e736]: Gopi Aravindh Raja
+                  - paragraph [ref=e737]: CSE Actor, Chennai
+            - group [ref=e738]:
+              - generic [ref=e743]:
+                - figure [ref=e744]
+                - generic [ref=e745]:
+                  - heading [level=3] [ref=e746]: Arun Raja Kamaraja
+                  - paragraph [ref=e747]: CSE Director, Chennai
+            - group [ref=e748]:
+              - generic [ref=e753]:
+                - figure [ref=e754]
+                - generic [ref=e755]:
+                  - heading [level=3] [ref=e756]: Siva Karthikeyan
+                  - paragraph [ref=e757]: CSE Lead Actor, Chennai
+            - group [ref=e758]:
+              - generic [ref=e763]:
+                - figure [ref=e764]
+                - generic [ref=e765]:
+                  - heading [level=3] [ref=e766]: Dhibu Ninan Thomas
+                  - paragraph [ref=e767]: CSE Music Director, Chennai
+            - group [ref=e768]:
+              - generic [ref=e773]:
+                - figure [ref=e774]
+                - generic [ref=e775]:
+                  - heading [level=3] [ref=e776]: Thoufiq Ahamed
+                  - paragraph [ref=e777]: E & I Fire Safety Engineer Hamad Medical Corporation, Qatar
+            - group [ref=e778]:
+              - generic [ref=e783]:
+                - figure [ref=e784]
+                - generic [ref=e785]:
+                  - heading [level=3] [ref=e786]: Rajkumar
+                  - paragraph [ref=e787]: MECH Design and Programmer Intra-Mold Co, Ltd, Thailand
+            - group [ref=e788]:
+              - generic [ref=e793]:
+                - figure [ref=e794]
+                - generic [ref=e795]:
+                  - heading [level=3] [ref=e796]: Karthikeyan
+                  - paragraph [ref=e797]: CIVIL Managing Partner, GMS Consultancy, Chennai
+            - group [ref=e798]:
+              - generic [ref=e803]:
+                - figure [ref=e804]
+                - generic [ref=e805]:
+                  - heading [level=3] [ref=e806]: Santhosh
+                  - paragraph [ref=e807]: Deputy Collector (Trainee) Thiruvannamalai District
+            - group [ref=e808]:
+              - generic [ref=e813]:
+                - figure [ref=e814]
+                - generic [ref=e815]:
+                  - heading [level=3] [ref=e816]: Dr. Shimi Haridasan
+                  - paragraph [ref=e817]: Professor, Electrical Engineering, Punjab Engineering College - Punjab
+            - group [ref=e818]:
+              - generic [ref=e823]:
+                - figure [ref=e824]
+                - generic [ref=e825]:
+                  - heading [level=3] [ref=e826]: Chandru
+                  - paragraph [ref=e827]: CEO & Founder of TechnoRUCS
+            - group [ref=e828]:
+              - generic [ref=e833]:
+                - figure [ref=e834]
+                - generic [ref=e835]:
+                  - heading [level=3] [ref=e836]: Joseph Christopher Xavie
+                  - paragraph [ref=e837]: CEO – Nishanthini Academy and Nishanthini HR Services, Coimbatore
+            - group [ref=e838]:
+              - generic [ref=e843]:
+                - figure [ref=e844]
+                - generic [ref=e845]:
+                  - heading [level=3] [ref=e846]: Arja Anil Das
+                  - paragraph [ref=e847]: Activity Co-ordinator, Santa Health Care, Harrow City, London UK
+            - group [ref=e848]:
+              - generic [ref=e853]:
+                - figure [ref=e854]
+                - generic [ref=e855]:
+                  - heading [level=3] [ref=e856]: Nishantini IPS
+                  - paragraph [ref=e857]: DIG
+        - button "Previous slide" [ref=e858] [cursor=pointer]:
+          - generic [ref=e859]: 
+        - button "Next slide" [ref=e860] [cursor=pointer]:
+          - generic [ref=e861]: 
+    - generic [ref=e865]:
+      - heading "Join our newsletter to stay updated" [level=2] [ref=e868]
+      - paragraph [ref=e874]:
+        - textbox "Your Email" [ref=e875]
+        - button "Subscribe" [ref=e876] [cursor=pointer]
+    - paragraph [ref=e878]: Type your paragraph here
+  - generic [ref=e881]:
+    - generic [ref=e883]:
+      - generic [ref=e884]:
+        - link [ref=e887] [cursor=pointer]:
+          - /url: https://alumni.jjcet.ac.in
+        - paragraph [ref=e890]: J.J. College of Engineering and Technology (JJCET) is a premier institution dedicated to excellence in education and research. Our mission is to empower students with knowledge and skills to thrive in a global society.
+        - list [ref=e893]:
+          - listitem [ref=e894]:
+            - generic [ref=e895] [cursor=pointer]:
+              - generic [ref=e896]: Facebook
+              - generic [ref=e897]: 
+          - listitem [ref=e898]:
+            - generic [ref=e899] [cursor=pointer]:
+              - generic [ref=e900]: Instagram
+              - generic [ref=e901]: 
+          - listitem [ref=e902]:
+            - generic [ref=e903] [cursor=pointer]:
+              - generic [ref=e904]: X-twitter
+              - generic [ref=e905]: 
+          - listitem [ref=e906]:
+            - generic [ref=e907] [cursor=pointer]:
+              - generic [ref=e908]: Linkedin
+              - generic [ref=e909]: 
+      - generic [ref=e910]:
+        - heading "Quick Links" [level=6] [ref=e913]
+        - navigation "Menu" [ref=e916]:
+          - list [ref=e917]:
+            - listitem [ref=e918]:
+              - link "Home" [ref=e919] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=e920]:
+              - link "About Us" [ref=e921] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e922]:
+              - link "Events" [ref=e923] [cursor=pointer]:
+                - /url: /events
+            - listitem [ref=e924]:
+              - link "Alumni Directory" [ref=e925] [cursor=pointer]:
+                - /url: /members
+            - listitem [ref=e926]:
+              - link "Contact Us" [ref=e927] [cursor=pointer]:
+                - /url: /contact-us
+      - generic [ref=e928]:
+        - heading "Alumni Resources" [level=6] [ref=e931]
+        - navigation "Menu" [ref=e934]:
+          - list [ref=e935]:
+            - listitem [ref=e936]:
+              - link "Job Board" [ref=e937] [cursor=pointer]:
+                - /url: https://alumni.jjcet.ac.in/forums/forum/job-postings/
+            - listitem [ref=e938]:
+              - link "Mentorship Program" [ref=e939] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e940]:
+              - link "Alumni Benefits" [ref=e941] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e942]:
+              - link "Volunteer Opportunities" [ref=e943] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e944]:
+              - link "Success Stories" [ref=e945] [cursor=pointer]:
+                - /url: "#"
+      - generic [ref=e946]:
+        - heading "Get In Touch" [level=6] [ref=e949]
+        - list [ref=e952]:
+          - listitem [ref=e953]:
+            - link [ref=e954] [cursor=pointer]:
+              - /url: mailto:contact@mysite.com
+              - generic [ref=e955]: 
+              - generic [ref=e957]: J.J. College of Engineering and Technology, Ammapettai, Poolangulathupatti (PO),Tiruchirappalli, Tamil Nadu - 620009.
+          - listitem [ref=e958]:
+            - link "alumni@jjcet.ac.in" [ref=e959] [cursor=pointer]:
+              - /url: mailto:alumni@jjcet.ac.in
+              - generic [ref=e960]: 
+          - listitem [ref=e963]:
+            - link "+919150411776" [ref=e964] [cursor=pointer]:
+              - /url: tel:tel:9842811776
+              - generic [ref=e965]: 
+    - generic [ref=e969]:
+      - paragraph [ref=e972]: © Copyright 2024. All Rights Reserved.
+      - paragraph [ref=e975]:
+        - text: Made with
+        - generic [ref=e976]: 
+        - text: by
+        - link "Internest Agency" [ref=e977] [cursor=pointer]:
+          - /url: https://internest.agency
+  - generic [ref=e978]: desktop
+  - status [ref=e979]
