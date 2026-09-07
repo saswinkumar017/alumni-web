@@ -1,5 +1,6 @@
 package com.alumniweb.alumniweb.service.impl;
 
+import com.alumniweb.alumniweb.dto.profile.ProfileCompleteRequest;
 import com.alumniweb.alumniweb.dto.profile.ProfileResponse;
 import com.alumniweb.alumniweb.dto.profile.ProfileUpdateRequest;
 import com.alumniweb.alumniweb.exception.UserNotFoundException;
@@ -76,6 +77,32 @@ public class ProfileServiceImpl implements ProfileService {
         if (request.maritalStatus() != null) alumni.setMaritalStatus(request.maritalStatus());
         // Academic fields (degree, department, batch, yearOfPassing) are
         // admin-managed on master_alumni; alumni cannot modify them.
+
+        userRepository.save(user);
+
+        return getProfile(userId);
+    }
+
+    @Override
+    @Transactional
+    public ProfileResponse completeProfile(Long userId, ProfileCompleteRequest request) {
+        User user = userRepository.findById(userId)
+            .orElseThrow(() -> new UserNotFoundException(userId));
+
+        MasterAlumni alumni = user.getMasterAlumni();
+
+        if (request.company() == null || request.company().isBlank()) {
+            throw new IllegalArgumentException("Current working company is required");
+        }
+        if (request.designation() == null || request.designation().isBlank()) {
+            throw new IllegalArgumentException("Designation is required");
+        }
+        alumni.setCompany(request.company().trim());
+        alumni.setDesignation(request.designation().trim());
+        if (request.phone() != null && !request.phone().isBlank()) alumni.setPhone(request.phone().trim());
+        if (request.address() != null && !request.address().isBlank()) alumni.setAddress(request.address().trim());
+        if (request.profession() != null && !request.profession().isBlank()) alumni.setProfession(request.profession().trim());
+        if (request.availability() != null) alumni.setAvailability(request.availability());
 
         userRepository.save(user);
 

@@ -2,6 +2,7 @@ package com.alumniweb.alumniweb.controller;
 
 import com.alumniweb.alumniweb.dto.common.ApiResponse;
 import com.alumniweb.alumniweb.dto.common.ErrorResponse;
+import com.alumniweb.alumniweb.dto.profile.ProfileCompleteRequest;
 import com.alumniweb.alumniweb.dto.profile.ProfileResponse;
 import com.alumniweb.alumniweb.dto.profile.ProfileUpdateRequest;
 import com.alumniweb.alumniweb.model.User;
@@ -14,6 +15,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -58,6 +60,22 @@ public class ProfileController {
     public ResponseEntity<ProfileResponse> updateProfile(@RequestBody ProfileUpdateRequest request) {
         Long userId = SecurityUtils.getCurrentUserId();
         return ResponseEntity.ok(profileService.updateProfile(userId, request));
+    }
+
+    @PutMapping("/complete")
+    @Operation(summary = "Complete profile after verification",
+        description = "Requires current working company and designation; other fields optional. Fills null database fields for newly verified alumni.")
+    @ApiResponses({
+        @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Profile completed successfully"),
+        @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "Required fields missing",
+            content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
+        @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "401", description = "Unauthorized",
+            content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
+    })
+    public ResponseEntity<ProfileResponse> completeProfile(
+            @Valid @RequestBody ProfileCompleteRequest request) {
+        Long userId = SecurityUtils.getCurrentUserId();
+        return ResponseEntity.ok(profileService.completeProfile(userId, request));
     }
 
     @PostMapping("/change-password")
