@@ -7,6 +7,7 @@ import {
   suspendAdminUser,
   activateAdminUser,
 } from "@/features/admin/_services/admin-service";
+import { getStoredUser } from "@/features/auth/_services/auth-api";
 
 interface User {
   id: number;
@@ -25,6 +26,11 @@ export default function UsersPage() {
   const [page, setPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
   const [processingId, setProcessingId] = useState<number | null>(null);
+  const [currentUsername, setCurrentUsername] = useState<string | null>(null);
+
+  useEffect(() => {
+    setCurrentUsername(getStoredUser()?.username ?? null);
+  }, []);
 
   const fetchUsers = useCallback(async () => {
     setLoading(true);
@@ -33,6 +39,7 @@ export default function UsersPage() {
       setUsers(data.content ?? []);
       setTotalPages(data.totalPages ?? 0);
     } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Failed to load users");
     } finally {
       setLoading(false);
     }
@@ -115,7 +122,9 @@ export default function UsersPage() {
                     {u.lastLogin ? new Date(u.lastLogin).toLocaleDateString() : "Never"}
                   </td>
                   <td className="px-4 py-3 text-right">
-                    {u.accountStatus === "ACTIVE" ? (
+                    {u.username === currentUsername ? (
+                      <span className="text-xs text-zinc-400" title="You cannot suspend your own account">You</span>
+                    ) : u.accountStatus === "ACTIVE" ? (
                       <button type="button" onClick={() => handleSuspend(u.id)} disabled={processingId === u.id} className="rounded bg-red-600 px-2 py-1 text-xs text-white hover:bg-red-700 disabled:opacity-50">
                         {processingId === u.id ? "..." : "Suspend"}
                       </button>

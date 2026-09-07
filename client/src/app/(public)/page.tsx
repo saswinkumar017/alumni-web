@@ -1,35 +1,32 @@
 import type { Metadata } from "next";
 import { HeroSection } from "@/sections/hero-section";
-import { StatsSection } from "@/sections/stats-section";
 import { AboutSection } from "@/sections/about-section";
+import { WhyJoinSection } from "@/sections/why-join-section";
 import { EventsSection } from "@/sections/events-section";
-import { SuccessStoriesSection } from "@/sections/success-stories-section";
-import { DepartmentsSection } from "@/sections/departments-section";
-import { CTASection } from "@/sections/cta-section";
+import { GallerySection } from "@/sections/gallery-section";
+import { AlumniMeetSection } from "@/sections/alumni-meet-section";
+import { ProminentAlumniSection } from "@/sections/prominent-alumni-section";
+import { NewsletterSection } from "@/sections/newsletter-section";
 
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Home",
+  title: "Register At JJCET Alumni Portal For Great Networking & Opportunity",
   description:
-    "JJCET Alumni Association — Connecting alumni, fostering networks, and building community for generations to come.",
-  openGraph: {
-    title: "JJCET Alumni Association",
-    description:
-      "Connecting alumni, fostering networks, and building a stronger community for generations to come.",
-  },
+    "Welcome to the Alumni Portal of JJCET — connect, collaborate, and continue to grow together.",
 };
 
 export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <StatsSection />
       <AboutSection />
+      <WhyJoinSection />
       <EventsSection />
-      <SuccessStoriesSection />
-      <DepartmentsSection />
-      <CTASection />
+      <GallerySection />
+      <AlumniMeetSection />
+      <ProminentAlumniSection />
+      <NewsletterSection />
     </>
   );
 }

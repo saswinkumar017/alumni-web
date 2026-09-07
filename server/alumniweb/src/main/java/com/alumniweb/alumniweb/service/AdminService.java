@@ -1,10 +1,10 @@
 package com.alumniweb.alumniweb.service;
 
+import com.alumniweb.alumniweb.dto.admin.AdminAlumniResponse;
 import com.alumniweb.alumniweb.dto.admin.AdminDashboardResponse;
 import com.alumniweb.alumniweb.dto.admin.PendingRequestResponse;
 import com.alumniweb.alumniweb.dto.admin.RequestApprovalRequest;
 import com.alumniweb.alumniweb.dto.admin.RequestApprovalResponse;
-import com.alumniweb.alumniweb.dto.search.AlumniSummaryResponse;
 import com.alumniweb.alumniweb.model.User;
 import com.alumniweb.alumniweb.model.enums.RequestStatus;
 import com.alumniweb.alumniweb.model.enums.RequestType;
@@ -23,7 +23,12 @@ public interface AdminService {
 
     RequestApprovalResponse processRequest(RequestApprovalRequest request);
 
-    Page<AlumniSummaryResponse> searchAlumni(String query, String department, String batch, Pageable pageable);
+    Page<AdminAlumniResponse> searchAlumni(String query, String department, String batch, Boolean hasAccount, Boolean verified, Pageable pageable);
+
+    @Deprecated
+    default Page<com.alumniweb.alumniweb.dto.search.AlumniSummaryResponse> searchAlumni(String query, String department, String batch, Pageable pageable) {
+        throw new UnsupportedOperationException("Use searchAlumni with hasAccount/verified");
+    }
 
     Page<User> listUsers(String query, Pageable pageable);
 

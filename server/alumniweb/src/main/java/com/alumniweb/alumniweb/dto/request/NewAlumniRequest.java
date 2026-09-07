@@ -28,8 +28,14 @@ public record NewAlumniRequest(
     LocalDate dob,
     Gender gender,
     String address,
+
+    // Required at signup so new alumni are never blank on professional details
+    @NotBlank(message = "Current working company is required")
     String company,
+
+    @NotBlank(message = "Designation is required")
     String designation,
+
     String profession,
     MaritalStatus maritalStatus,
     Availability availability,

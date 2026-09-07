@@ -74,10 +74,8 @@ public class ProfileServiceImpl implements ProfileService {
         if (request.profession() != null) alumni.setProfession(request.profession());
         if (request.availability() != null) alumni.setAvailability(request.availability());
         if (request.maritalStatus() != null) alumni.setMaritalStatus(request.maritalStatus());
-        if (request.degree() != null) alumni.setDegree(request.degree());
-        if (request.department() != null) alumni.setDepartment(request.department());
-        if (request.batch() != null) alumni.setBatch(request.batch());
-        if (request.yearOfPassing() != null) alumni.setYearOfPassing(request.yearOfPassing());
+        // Academic fields (degree, department, batch, yearOfPassing) are
+        // admin-managed on master_alumni; alumni cannot modify them.
 
         userRepository.save(user);
 

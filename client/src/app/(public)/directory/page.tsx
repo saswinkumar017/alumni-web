@@ -29,6 +29,9 @@ export default function DirectoryPage() {
   const [showAddModal, setShowAddModal] = useState(false);
   const [selectedAlumni, setSelectedAlumni] = useState<Alumni | null>(null);
   const [submitting, setSubmitting] = useState(false);
+  const [connectingReg, setConnectingReg] = useState<string | null>(null);
+  const [sentRegs, setSentRegs] = useState<Set<string>>(new Set());
+  const [noAccountRegs, setNoAccountRegs] = useState<Set<string>>(new Set());
 
   // update form
   const [updateFields, setUpdateFields] = useState({ name: "", currentEmail: "", email: "", department: "", batch: "" });
@@ -78,6 +81,41 @@ export default function DirectoryPage() {
       if (res.ok) { toast.success("Update request submitted to admin"); setShowUpdateModal(false); }
       else { toast.error("Failed to submit request"); }
     } catch { toast.error("Failed to submit request"); } finally { setSubmitting(false); }
+  }
+
+  async function handleConnect(person: Alumni) {
+    const token = typeof window !== "undefined" ? localStorage.getItem("accessToken") : null;
+    if (!token) {
+      toast.error("Sign in to connect with alumni");
+      window.location.href = `/auth/login?redirect=${encodeURIComponent("/directory")}`;
+      return;
+    }
+    setConnectingReg(person.registerNumber);
+    try {
+      const res = await fetch(
+        `${API}/connections/by-register/${encodeURIComponent(person.registerNumber)}`,
+        {
+          method: "POST",
+          headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+          body: JSON.stringify({}),
+        }
+      );
+      if (res.ok) {
+        toast.success(`Connection request sent to ${person.name}`);
+        setSentRegs((s) => new Set(s).add(person.registerNumber));
+      } else {
+        const body = await res.json().catch(() => null);
+        const message: string = body?.message ?? "Failed to send connection request";
+        if (res.status === 409 && message.toLowerCase().includes("not registered")) {
+          setNoAccountRegs((s) => new Set(s).add(person.registerNumber));
+        }
+        toast.error(message);
+      }
+    } catch {
+      toast.error("Failed to send connection request");
+    } finally {
+      setConnectingReg(null);
+    }
   }
 
   async function submitAddRequest() {
@@ -152,7 +190,14 @@ export default function DirectoryPage() {
                       <p className="mt-0.5 text-xs text-zinc-400">Reg: {person.registerNumber}</p>
                     </div>
                   </div>
-                  <div className="mt-3 flex justify-end">
+                  <div className="mt-3 flex justify-end gap-3">
+                    {noAccountRegs.has(person.registerNumber) ? (
+                      <span className="text-xs text-zinc-400" title="This alumni has not registered on the portal yet">No portal account</span>
+                    ) : (
+                      <button onClick={() => handleConnect(person)} disabled={connectingReg === person.registerNumber || sentRegs.has(person.registerNumber)} className="text-xs font-medium text-zinc-900 hover:underline disabled:opacity-50">
+                        {sentRegs.has(person.registerNumber) ? "Requested ✓" : connectingReg === person.registerNumber ? "Sending..." : "Connect"}
+                      </button>
+                    )}
                     <button onClick={() => openUpdateModal(person)} className="text-xs font-medium text-zinc-500 hover:text-zinc-900">Request Update</button>
                   </div>
                 </div>

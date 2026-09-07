@@ -17,6 +17,8 @@ public interface MasterAlumniRepository extends JpaRepository<MasterAlumni, Long
 
     Optional<MasterAlumni> findByRegisterNumber(String registerNumber);
 
+    List<MasterAlumni> findAllByRegisterNumberIn(java.util.Collection<String> registerNumbers);
+
     boolean existsByRegisterNumber(String registerNumber);
 
     boolean existsByEmail(String email);
@@ -61,4 +63,37 @@ public interface MasterAlumniRepository extends JpaRepository<MasterAlumni, Long
                                        @Param("department") String department,
                                        @Param("batch") String batch,
                                        Pageable pageable);
+
+    @Query(value = """
+            SELECT DISTINCT m FROM MasterAlumni m LEFT JOIN FETCH m.user u WHERE
+            (:query IS NULL OR LOWER(m.name) LIKE LOWER(CONCAT('%', :query, '%'))
+            OR LOWER(m.email) LIKE LOWER(CONCAT('%', :query, '%'))
+            OR LOWER(m.registerNumber) LIKE LOWER(CONCAT('%', :query, '%'))
+            OR LOWER(m.department) LIKE LOWER(CONCAT('%', :query, '%'))
+            OR LOWER(m.company) LIKE LOWER(CONCAT('%', :query, '%'))
+            OR LOWER(m.designation) LIKE LOWER(CONCAT('%', :query, '%')))
+            AND (:department IS NULL OR m.department = :department)
+            AND (:batch IS NULL OR m.batch = :batch)
+            AND (:hasAccount IS NULL OR (:hasAccount = TRUE AND u IS NOT NULL) OR (:hasAccount = FALSE AND u IS NULL))
+            AND (:verified IS NULL OR u.emailVerified = :verified)
+            """,
+            countQuery = """
+            SELECT COUNT(m) FROM MasterAlumni m LEFT JOIN m.user u WHERE
+            (:query IS NULL OR LOWER(m.name) LIKE LOWER(CONCAT('%', :query, '%'))
+            OR LOWER(m.email) LIKE LOWER(CONCAT('%', :query, '%'))
+            OR LOWER(m.registerNumber) LIKE LOWER(CONCAT('%', :query, '%'))
+            OR LOWER(m.department) LIKE LOWER(CONCAT('%', :query, '%'))
+            OR LOWER(m.company) LIKE LOWER(CONCAT('%', :query, '%'))
+            OR LOWER(m.designation) LIKE LOWER(CONCAT('%', :query, '%')))
+            AND (:department IS NULL OR m.department = :department)
+            AND (:batch IS NULL OR m.batch = :batch)
+            AND (:hasAccount IS NULL OR (:hasAccount = TRUE AND u IS NOT NULL) OR (:hasAccount = FALSE AND u IS NULL))
+            AND (:verified IS NULL OR u.emailVerified = :verified)
+            """)
+    Page<MasterAlumni> searchAdmin(@Param("query") String query,
+                                  @Param("department") String department,
+                                  @Param("batch") String batch,
+                                  @Param("hasAccount") Boolean hasAccount,
+                                  @Param("verified") Boolean verified,
+                                  Pageable pageable);
 }

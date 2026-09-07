@@ -32,6 +32,7 @@ public class EventService {
     private final EventRepository eventRepository;
     private final UserRepository userRepository;
     private final AuditEventPublisher auditEventPublisher;
+    private final com.fasterxml.jackson.databind.ObjectMapper objectMapper;
 
     public List<EventResponse> listEvents(boolean includeDrafts) {
         if (includeDrafts) {
@@ -97,6 +98,7 @@ public class EventService {
                 .coverImageUrl(request.coverImageUrl())
                 .status(request.status() != null ? request.status() : EventStatus.DRAFT)
                 .maxAttendees(request.maxAttendees())
+                .customFields(toCustomJson(request.customFields()))
                 .createdBy(SecurityUtils.getCurrentUserId())
                 .build();
 
@@ -137,6 +139,9 @@ public class EventService {
         if (request.maxAttendees() != null) {
             event.setMaxAttendees(request.maxAttendees());
         }
+        if (request.customFields() != null) {
+            event.setCustomFields(toCustomJson(request.customFields()));
+        }
 
         Event saved = eventRepository.save(event);
 
@@ -155,8 +160,16 @@ public class EventService {
         publishAudit(currentUser(), "DELETE_EVENT", event, oldValues);
     }
 
-    private String resolveSlug(String requestedSlug, String title) {
-        String slug;
+    private String toCustomJson(java.util.Map<String, Object> customFields) {
+        if (customFields == null || customFields.isEmpty()) return null;
+        try {
+            return objectMapper.writeValueAsString(customFields);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Invalid customFields payload");
+        }
+    }
+
+    private String resolveSlug(String requestedSlug, String title) {        String slug;
         if (requestedSlug != null && !requestedSlug.isBlank()) {
             slug = requestedSlug.trim().toLowerCase(Locale.ROOT);
             if (!SLUG_PATTERN.matcher(slug).matches()) {

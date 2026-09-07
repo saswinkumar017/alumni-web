@@ -13,11 +13,13 @@ export interface NavGroup {
 
 export const publicNavigation: NavItem[] = [
   { label: "Home", href: "/", activePattern: "^/$" },
-  { label: "About", href: "/about", activePattern: "^/about" },
+  { label: "About Us", href: "/about", activePattern: "^/about" },
+  { label: "Distinguished Alumni", href: "/distinguished-alumni", activePattern: "^/distinguished-alumni" },
+  { label: "Feedback", href: "/feedback", activePattern: "^/feedback" },
+  { label: "Contact Us", href: "/contact", activePattern: "^/contact" },
   { label: "Directory", href: "/directory", activePattern: "^/directory" },
   { label: "Events", href: "/events", activePattern: "^/events" },
   { label: "FAQ", href: "/faq", activePattern: "^/faq" },
-  { label: "Contact", href: "/contact", activePattern: "^/contact" },
 ];
 
 export const alumniNavigation: NavGroup[] = [
@@ -39,7 +41,10 @@ export const alumniNavigation: NavGroup[] = [
   },
   {
     group: "Account",
-    items: [{ label: "Settings", href: "/alumni/settings", activePattern: "^/alumni/settings" }],
+    items: [
+      { label: "Settings", href: "/alumni/settings", activePattern: "^/alumni/settings" },
+      { label: "My Requests", href: "/alumni/requests", activePattern: "^/alumni/requests" },
+    ],
   },
 ];
 
@@ -60,6 +65,11 @@ export const adminNavigation: NavGroup[] = [
         label: "Announcements",
         href: "/admin/announcements",
         activePattern: "^/admin/announcements",
+      },
+      {
+        label: "Events",
+        href: "/admin/events",
+        activePattern: "^/admin/events",
       },
     ],
   },

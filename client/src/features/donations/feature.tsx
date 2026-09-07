@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { toast } from "sonner";
 import { getDonations, createDonation, getDonationStats } from "./_services/donation-service";
 import type { Donation, DonationStats } from "@/types/domain/donation";
+import { useAuthStore } from "@/stores/global/auth-store";
 
 export function DonationsPage() {
   const [donations, setDonations] = useState<Donation[]>([]);
@@ -13,6 +14,9 @@ export function DonationsPage() {
   const [amount, setAmount] = useState("");
   const [purpose, setPurpose] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const currentUser = useAuthStore((s) => s.user);
+  const donorLabel =
+    currentUser?.name ?? (currentUser as { username?: string } | null)?.username ?? "You";
 
   useEffect(() => {
     const load = async () => {
@@ -166,7 +170,7 @@ export function DonationsPage() {
                     <td className="whitespace-nowrap px-4 py-3 text-sm text-zinc-600">
                       {new Date(d.createdAt).toLocaleDateString()}
                     </td>
-                    <td className="whitespace-nowrap px-4 py-3 text-sm font-medium text-zinc-900">{d.displayName}</td>
+                    <td className="whitespace-nowrap px-4 py-3 text-sm font-medium text-zinc-900">{donorLabel}</td>
                     <td className="whitespace-nowrap px-4 py-3 text-sm text-zinc-600">
                       {d.amount.toLocaleString()} {d.currency}
                     </td>

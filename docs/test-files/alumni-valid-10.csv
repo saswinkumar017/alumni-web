@@ -1,0 +1,11 @@
+registerNumber,name,email,department,degree,batch,yearOfPassing,phone,company,designation
+811321104001,Test Kavitha,test.kavitha@example.com,CSE,B.E.,2021,2021,9876500001,TCS,Engineer
+811321205002,Test Ravi,test.ravi@example.com,IT,B.Tech,2021,2021,9876500002,Wipro,Analyst
+811321206003,Test Anitha,test.anitha@example.com,ECE,B.E.,2021,2021,9876500003,Intel,Firmware Engineer
+811320104004,Test Arun,test.arun@example.com,CSE,B.E.,2020,2020,9876500004,Infosys,Developer
+811320114005,Test Divya,test.divya@example.com,MECH,B.E.,2020,2020,9876500005,Ashok Leyland,Design Engineer
+811322104006,Test Karthik,test.karthik@example.com,CSE,B.E.,2022,2022,9876500006,Zoho,Software Engineer
+811322105007,Test Priya,test.priya@example.com,EEE,B.E.,2022,2022,9876500007,ABB,Electrical Engineer
+811321103008,Test Mohan,test.mohan@example.com,CIVIL,B.E.,2021,2021,9876500008,L&T,Site Engineer
+811320205009,Test Sneha,test.sneha@example.com,IT,B.Tech,2020,2020,9876500010,Cognizant,Analyst
+811322114010,Test Vikram,test.vikram@example.com,MECH,B.E.,2022,2022,9876500011,TVS,Production Engineer

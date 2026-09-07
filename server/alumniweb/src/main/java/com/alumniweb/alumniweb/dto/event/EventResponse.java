@@ -14,9 +14,22 @@ public record EventResponse(
         String image,
         String category,
         Integer maxAttendees,
+        java.util.Map<String, Object> customFields,
         LocalDateTime createdAt,
         LocalDateTime updatedAt
 ) {
+
+    private static final com.fasterxml.jackson.databind.ObjectMapper MAPPER = new com.fasterxml.jackson.databind.ObjectMapper();
+
+    @SuppressWarnings("unchecked")
+    static java.util.Map<String, Object> parseCustom(String raw) {
+        if (raw == null || raw.isBlank()) return null;
+        try {
+            return MAPPER.readValue(raw, java.util.Map.class);
+        } catch (Exception e) {
+            return null;
+        }
+    }
 
     public static EventResponse from(Event event) {
         String category = event.getEventDate().isBefore(LocalDateTime.now()) ? "past" : "upcoming";
@@ -30,6 +43,7 @@ public record EventResponse(
                 event.getCoverImageUrl(),
                 category,
                 event.getMaxAttendees(),
+                parseCustom(event.getCustomFields()),
                 event.getCreatedAt(),
                 event.getUpdatedAt()
         );

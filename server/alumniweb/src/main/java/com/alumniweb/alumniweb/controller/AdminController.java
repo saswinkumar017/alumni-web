@@ -1,11 +1,13 @@
 package com.alumniweb.alumniweb.controller;
 
+import com.alumniweb.alumniweb.dto.admin.AdminAlumniResponse;
 import com.alumniweb.alumniweb.dto.admin.AdminDashboardResponse;
+import com.alumniweb.alumniweb.dto.admin.BulkImportResponse;
 import com.alumniweb.alumniweb.dto.admin.PendingRequestResponse;
 import com.alumniweb.alumniweb.dto.admin.RequestApprovalRequest;
 import com.alumniweb.alumniweb.dto.admin.RequestApprovalResponse;
 import com.alumniweb.alumniweb.dto.common.PageResponse;
-import com.alumniweb.alumniweb.dto.search.AlumniSummaryResponse;
+import com.alumniweb.alumniweb.service.AlumniImportService;
 import com.alumniweb.alumniweb.model.AuditLog;
 import com.alumniweb.alumniweb.model.User;
 import com.alumniweb.alumniweb.model.enums.AuditCategory;
@@ -39,11 +41,13 @@ public class AdminController {
     private final AdminService adminService;
     private final AuditLogRepository auditLogRepository;
     private final AuditEventPublisher auditEventPublisher;
+    private final AlumniImportService alumniImportService;
 
-    public AdminController(AdminService adminService, AuditLogRepository auditLogRepository, AuditEventPublisher auditEventPublisher) {
+    public AdminController(AdminService adminService, AuditLogRepository auditLogRepository, AuditEventPublisher auditEventPublisher, AlumniImportService alumniImportService) {
         this.adminService = adminService;
         this.auditLogRepository = auditLogRepository;
         this.auditEventPublisher = auditEventPublisher;
+        this.alumniImportService = alumniImportService;
     }
 
     @GetMapping("/dashboard")
@@ -59,9 +63,8 @@ public class AdminController {
             @RequestParam(required = false) RequestStatus status,
             @RequestParam(required = false) String query) {
         Pageable pageable = PageRequest.of(page, size);
-        Page<PendingRequestResponse> resultPage = (type != null || status != null || query != null)
-                ? adminService.getFilteredRequests(type, status, query, pageable)
-                : adminService.getPendingRequests(pageable);
+        Page<PendingRequestResponse> resultPage =
+                adminService.getFilteredRequests(type, status, query, pageable);
         return ResponseEntity.ok(PageResponse.of(
                 resultPage.getContent(), resultPage.getNumber(), resultPage.getSize(), resultPage.getTotalElements()));
     }
@@ -88,15 +91,26 @@ public class AdminController {
     }
 
     @GetMapping("/alumni")
-    public ResponseEntity<PageResponse<AlumniSummaryResponse>> searchAlumni(
+    public ResponseEntity<PageResponse<AdminAlumniResponse>> searchAlumni(
             @RequestParam(required = false) String query,
             @RequestParam(required = false) String department,
             @RequestParam(required = false) String batch,
+            @RequestParam(required = false) Boolean hasAccount,
+            @RequestParam(required = false) Boolean verified,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "20") int size) {
-        Page<AlumniSummaryResponse> resultPage = adminService.searchAlumni(query, department, batch, PageRequest.of(page, size));
+        Page<AdminAlumniResponse> resultPage = adminService.searchAlumni(query, department, batch, hasAccount, verified, PageRequest.of(page, size));
         return ResponseEntity.ok(PageResponse.of(
                 resultPage.getContent(), resultPage.getNumber(), resultPage.getSize(), resultPage.getTotalElements()));
+    }
+
+    @PostMapping(value = "/alumni/import", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<BulkImportResponse> importAlumni(
+            @RequestParam("file") org.springframework.web.multipart.MultipartFile file) throws Exception {
+        if (file.isEmpty()) {
+            return ResponseEntity.badRequest().build();
+        }
+        return ResponseEntity.ok(alumniImportService.importFile(file));
     }
 
     // ---- Admin-specific User Management ----
@@ -120,6 +134,10 @@ public class AdminController {
     public ResponseEntity<Map<String, String>> suspendUser(
             @PathVariable Long id,
             @RequestBody(required = false) Map<String, String> body) {
+        Long currentId = com.alumniweb.alumniweb.security.SecurityUtils.getCurrentUserId();
+        if (currentId != null && currentId.equals(id)) {
+            return ResponseEntity.badRequest().body(Map.of("message", "You cannot suspend your own account"));
+        }
         String reason = body != null ? body.getOrDefault("reason", "Suspended by admin") : "Suspended by admin";
         adminService.suspendUser(id, reason);
         return ResponseEntity.ok(Map.of("message", "User suspended", "status", "suspended"));

@@ -12,6 +12,9 @@ export interface EventDetailData {
   description: string;
   date?: string;
   location?: string;
+  image?: string | null;
+  maxAttendees?: number | null;
+  customFields?: Record<string, unknown> | null;
 }
 
 export interface EventInfoSectionProps {
@@ -37,6 +40,9 @@ export function EventInfoSection({
         description={event.description}
         date={event.date}
         location={event.location}
+        image={event.image}
+        maxAttendees={event.maxAttendees}
+        customFields={event.customFields}
         headingTag={headingTag}
       >
         {children}

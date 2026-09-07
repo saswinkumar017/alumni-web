@@ -1,7 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
-import { env } from "@/config/env";
+import { useCallback, useEffect, useState } from "react";import { env } from "@/config/env";
 import { toast } from "sonner";
 
 const API = env.api.baseUrl;
@@ -61,6 +60,15 @@ export default function AdminRequestsPage() {
   }, [page, statusFilter, typeFilter]);
 
   useEffect(() => { fetchRequests(); }, [fetchRequests]);
+
+  useEffect(() => {
+    if (!selected) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setSelected(null);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [selected]);
 
   async function handleApprove() {
     if (!selected) return;

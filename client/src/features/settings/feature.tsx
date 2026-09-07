@@ -1,3 +1,5 @@
+"use client";
+
 import type { SessionUser } from "@/types";
 import { toast } from "sonner";
 import { env } from "@/config/env";

@@ -10,10 +10,8 @@ public record ProfileUpdateRequest(
     String designation,
     String profession,
     Availability availability,
-    MaritalStatus maritalStatus,
-    String degree,
-    String department,
-    String batch,
-    Integer yearOfPassing
+    MaritalStatus maritalStatus
+    // Academic fields (degree, department, batch, yearOfPassing) are
+    // admin-managed on master_alumni; alumni cannot modify them.
 ) {
 }

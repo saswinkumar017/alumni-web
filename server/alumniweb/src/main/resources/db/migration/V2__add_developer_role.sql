@@ -3,7 +3,10 @@
 -- MFA, session management, permissions, audit, config, and CMS tables.
 
 -- 1. Modify user_account: add DEVELOPER to role enum
-ALTER TABLE user_account MODIFY COLUMN role ENUM('ADMIN','USER','DEVELOPER') NOT NULL;
+-- NOTE: skipped on fresh installs; Hibernate (ddl-auto=update) owns the
+-- user_account table/enum via the UserRole entity. The ALTER is only needed
+-- for pre-existing databases created before DEVELOPER existed, run it manually there.
+-- ALTER TABLE user_account MODIFY COLUMN role ENUM('ADMIN','USER','DEVELOPER') NOT NULL;
 
 -- 2. mfa_enrollment
 CREATE TABLE mfa_enrollment (
@@ -241,14 +244,14 @@ CREATE TABLE audit_log (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Prevent UPDATE and DELETE on audit_log
-DELIMITER //
+-- NOTE: plain semicolon syntax (no DELIMITER keyword: Flyway does not accept mysql-CLI DELIMITER).
 CREATE TRIGGER trg_audit_log_no_update
 BEFORE UPDATE ON audit_log
 FOR EACH ROW
 BEGIN
     SIGNAL SQLSTATE '45000'
     SET MESSAGE_TEXT = 'audit_log is append-only: UPDATE is not allowed';
-END //
+END;
 
 CREATE TRIGGER trg_audit_log_no_delete
 BEFORE DELETE ON audit_log
@@ -256,8 +259,7 @@ FOR EACH ROW
 BEGIN
     SIGNAL SQLSTATE '45000'
     SET MESSAGE_TEXT = 'audit_log is append-only: DELETE is not allowed';
-END //
-DELIMITER ;
+END;
 
 -- 15. platform_config
 CREATE TABLE platform_config (

@@ -1,0 +1,6 @@
+registerNumber,name,email,department,degree,batch,yearOfPassing,phone,company,designation,gender
+811321104001,Test Kavitha,test.kavitha@example.com,CSE,B.E.,2021,2021,9876500001,TCS,Engineer,MALE
+811321205002,Test Ravi,test.ravi@example.com,IT,B.Tech,2021,2021,9876500002,Wipro,Analyst,MALE
+,Missing RegNo,test.bad1@example.com,CSE,B.E.,2021,2021,9876500003,CTS,Tester,MALE
+811321206104,,test.bad2@example.com,ECE,B.E.,2021,2021,9876500004,Intel,Engineer,FEMALE
+811320104105,Bad Enum Tolerated,test.bad3@example.com,CSE,B.E.,2020,2020,9876500005,Infosys,Developer,UNKNOWN

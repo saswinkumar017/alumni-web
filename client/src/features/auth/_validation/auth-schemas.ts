@@ -30,3 +30,20 @@ export const registerSchema = z.object({
 });
 
 export type RegisterInput = z.infer<typeof registerSchema>;
+
+export const profileCompleteSchema = z.object({
+  company: z
+    .string()
+    .min(1, "Current working company is required")
+    .max(200, "Company name is too long"),
+  designation: z
+    .string()
+    .min(1, "Designation is required")
+    .max(200, "Designation is too long"),
+  phone: z.string().max(20).optional().or(z.literal("")),
+  address: z.string().max(500).optional().or(z.literal("")),
+  profession: z.string().max(200).optional().or(z.literal("")),
+  availability: z.enum(["AVAILABLE", "BUSY", "UNAVAILABLE"]),
+});
+
+export type ProfileCompleteInput = z.infer<typeof profileCompleteSchema>;

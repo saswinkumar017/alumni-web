@@ -12,6 +12,7 @@ public record UpdateEventRequest(
         LocalDateTime eventDate,
         String coverImageUrl,
         EventStatus status,
-        Integer maxAttendees
+        Integer maxAttendees,
+        java.util.Map<String, Object> customFields
 ) {
 }

@@ -14,6 +14,7 @@ export const EventSchema = z.object({
   image: z.string().nullable().optional(),
   category: z.enum(["upcoming", "past"]),
   maxAttendees: z.number().int().nullable().optional(),
+  customFields: z.record(z.unknown()).nullable().optional(),
 });
 
 export type Event = z.infer<typeof EventSchema> & Timestamped & { readonly id: EventId };

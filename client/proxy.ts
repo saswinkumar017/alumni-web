@@ -3,9 +3,30 @@ import { NextResponse } from "next/server";
 
 import { AUTH_COOKIE_NAME, isAuthRoute, requiresAdmin, requiresAuth, requiresDeveloper } from "@/lib/route-protection";
 
+function isJwtExpired(token: string): boolean {
+  try {
+    const parts = token.split(".");
+    if (parts.length !== 3 || !parts[1]) return true;
+    const payload = JSON.parse(
+      Buffer.from(parts[1].replace(/-/g, "+").replace(/_/g, "/"), "base64").toString("utf8"),
+    );
+    if (!payload.exp) return false;
+    return Date.now() >= payload.exp * 1000;
+  } catch {
+    return true;
+  }
+}
+
+function clearSession(response: NextResponse) {
+  response.cookies.delete(AUTH_COOKIE_NAME);
+  response.cookies.delete("user_role");
+  return response;
+}
+
 export default function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const sessionToken = request.cookies.get(AUTH_COOKIE_NAME)?.value ?? null;
+  const rawToken = request.cookies.get(AUTH_COOKIE_NAME)?.value ?? null;
+  const sessionToken = rawToken && !isJwtExpired(rawToken) ? rawToken : null;
   const userRole = request.cookies.get("user_role")?.value ?? null;
 
   const response = NextResponse.next();
@@ -20,7 +41,9 @@ export default function proxy(request: NextRequest) {
   if (requiresAuth(pathname) && !sessionToken) {
     const loginUrl = new URL("/auth/login", request.url);
     loginUrl.searchParams.set("redirect", pathname);
-    return NextResponse.redirect(loginUrl);
+    const redirect = NextResponse.redirect(loginUrl);
+    if (rawToken) return clearSession(redirect);
+    return redirect;
   }
 
   if (requiresDeveloper(pathname) && userRole !== "developer") {
@@ -32,7 +55,14 @@ export default function proxy(request: NextRequest) {
   }
 
   if (requiresAdmin(pathname) && !sessionToken) {
-    return NextResponse.redirect(new URL("/auth/login", request.url));
+    const redirect = NextResponse.redirect(new URL("/auth/login", request.url));
+    if (rawToken) return clearSession(redirect);
+    return redirect;
+  }
+
+  // Expired token on a public page: clean up so a restart never looks logged-in
+  if (rawToken && !sessionToken) {
+    return clearSession(response);
   }
 
   return response;

@@ -7,11 +7,13 @@ import com.alumniweb.alumniweb.exception.AlumniNotFoundException;
 import com.alumniweb.alumniweb.exception.RequestNotFoundException;
 import com.alumniweb.alumniweb.model.MasterAlumni;
 import com.alumniweb.alumniweb.model.Request;
+import com.alumniweb.alumniweb.model.User;
 import com.alumniweb.alumniweb.model.enums.RequestStatus;
 import com.alumniweb.alumniweb.model.enums.RequestType;
 import com.alumniweb.alumniweb.model.mapper.RequestMapper;
 import com.alumniweb.alumniweb.model.repository.MasterAlumniRepository;
 import com.alumniweb.alumniweb.model.repository.RequestRepository;
+import com.alumniweb.alumniweb.model.repository.UserRepository;
 import com.alumniweb.alumniweb.service.RequestService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -26,6 +28,7 @@ public class RequestServiceImpl implements RequestService {
 
     private final MasterAlumniRepository masterAlumniRepository;
     private final RequestRepository requestRepository;
+    private final UserRepository userRepository;
     private final RequestMapper requestMapper;
     private final ObjectMapper objectMapper;
 
@@ -80,5 +83,27 @@ public class RequestServiceImpl implements RequestService {
         Request req = requestRepository.findById(requestId)
             .orElseThrow(() -> new RequestNotFoundException(requestId));
         return requestMapper.toStatusResponse(req);
+    }
+
+    @Override
+    public java.util.List<RequestStatusResponse> getMyRequests() {
+        Long userId = com.alumniweb.alumniweb.security.SecurityUtils.getCurrentUserId();
+        if (userId == null) {
+            throw new IllegalStateException("Authentication is required");
+        }
+        User user = userRepository.findById(userId)
+            .orElseThrow(() -> new java.util.NoSuchElementException("User not found"));
+        MasterAlumni master = user.getMasterAlumni();
+        String email = master != null ? master.getEmail() : null;
+        java.util.List<Request> requests;
+        if (master != null && email != null && !email.isBlank()) {
+            requests = requestRepository
+                .findByMasterAlumniOrRequesterEmailOrderBySubmittedAtDesc(master, email);
+        } else if (master != null) {
+            requests = requestRepository.findByMasterAlumni(master);
+        } else {
+            requests = java.util.List.of();
+        }
+        return requests.stream().map(requestMapper::toStatusResponse).toList();
     }
 }

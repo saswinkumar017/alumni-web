@@ -1,12 +1,12 @@
 package com.alumniweb.alumniweb.service.impl;
 
+import com.alumniweb.alumniweb.dto.admin.AdminAlumniResponse;
 import com.alumniweb.alumniweb.dto.admin.AdminDashboardResponse;
 import com.alumniweb.alumniweb.dto.admin.PendingRequestResponse;
 import com.alumniweb.alumniweb.dto.admin.RequestApprovalRequest;
 import com.alumniweb.alumniweb.dto.admin.RequestApprovalResponse;
 import com.alumniweb.alumniweb.dto.request.EmailCorrectionRequest;
 import com.alumniweb.alumniweb.dto.request.NewAlumniRequest;
-import com.alumniweb.alumniweb.dto.search.AlumniSummaryResponse;
 import com.alumniweb.alumniweb.exception.RequestNotFoundException;
 import com.alumniweb.alumniweb.model.AuditLog;
 import com.alumniweb.alumniweb.model.MasterAlumni;
@@ -16,7 +16,6 @@ import com.alumniweb.alumniweb.model.enums.AuditCategory;
 import com.alumniweb.alumniweb.model.enums.AuditLogLevel;
 import com.alumniweb.alumniweb.model.enums.RequestStatus;
 import com.alumniweb.alumniweb.model.enums.RequestType;
-import com.alumniweb.alumniweb.model.mapper.MasterAlumniMapper;
 import com.alumniweb.alumniweb.model.mapper.RequestMapper;
 import com.alumniweb.alumniweb.model.repository.AuditLogRepository;
 import com.alumniweb.alumniweb.model.repository.MasterAlumniRepository;
@@ -44,7 +43,6 @@ public class AdminServiceImpl implements AdminService {
     private final UserRepository userRepository;
     private final AuditLogRepository auditLogRepository;
     private final RequestMapper requestMapper;
-    private final MasterAlumniMapper masterAlumniMapper;
     private final EmailService emailService;
     private final ObjectMapper objectMapper;
 
@@ -109,9 +107,27 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public Page<AlumniSummaryResponse> searchAlumni(String query, String department, String batch, Pageable pageable) {
-        return masterAlumniRepository.searchByFilters(query, department, batch, pageable)
-            .map(masterAlumniMapper::toSummaryResponse);
+    public Page<AdminAlumniResponse> searchAlumni(String query, String department, String batch, Boolean hasAccount, Boolean verified, Pageable pageable) {
+        String q = (query == null || query.isBlank()) ? null : query.trim();
+        String dept = (department == null || department.isBlank()) ? null : department.trim();
+        String b = (batch == null || batch.isBlank()) ? null : batch.trim();
+        return masterAlumniRepository.searchAdmin(q, dept, b, hasAccount, verified, pageable)
+                .map(m -> {
+                    var u = m.getUser();
+                    return new AdminAlumniResponse(
+                            m.getId(),
+                            m.getRegisterNumber(),
+                            m.getName(),
+                            m.getEmail(),
+                            m.getDepartment(),
+                            m.getBatch(),
+                            m.getYearOfPassing(),
+                            u != null,
+                            u != null ? u.isEmailVerified() : null,
+                            u != null && u.getAccountStatus() != null ? u.getAccountStatus().name() : null,
+                            u != null ? u.getUsername() : null
+                    );
+                });
     }
 
     private RequestApprovalResponse approve(Request req, String adminNotes) {

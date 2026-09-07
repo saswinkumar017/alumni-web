@@ -27,6 +27,8 @@ public interface RequestRepository extends JpaRepository<Request, Long> {
 
     List<Request> findByMasterAlumni(MasterAlumni masterAlumni);
 
+    List<Request> findByMasterAlumniOrRequesterEmailOrderBySubmittedAtDesc(MasterAlumni masterAlumni, String requesterEmail);
+
     Page<Request> findByMasterAlumni(MasterAlumni masterAlumni, Pageable pageable);
 
     long countByStatus(RequestStatus status);

@@ -53,12 +53,20 @@ export default function PublicLayout({
                 </Link>
               </div>
             ) : (
-              <Link
-                href="/auth/login"
-                className="rounded-full bg-accent-solid px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-accent-solid-hover"
-              >
-                Sign in
-              </Link>
+              <div className="flex items-center gap-3">
+                <Link
+                  href="/auth/register"
+                  className="text-sm font-medium text-zinc-600 hover:text-zinc-900"
+                >
+                  Register
+                </Link>
+                <Link
+                  href="/auth/login"
+                  className="rounded-full bg-accent-solid px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-accent-solid-hover"
+                >
+                  Login
+                </Link>
+              </div>
             )}
           </div>
         </nav>

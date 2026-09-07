@@ -69,11 +69,7 @@ public class OtpService {
     public boolean verifyLoginOtp(String username, String otp) {
         List<VerificationToken> tokens = verificationTokenRepository
                 .findByPurposeAndUsedFalse("LOGIN_OTP");
-        return tokens.stream()
-                .filter(t -> t.getEmail().equals(username))
-                .findFirst()
-                .map(t -> verifyToken(t, otp))
-                .orElse(false);
+        return verifyNewestFirst(tokens, username, otp);
     }
 
     @Transactional
@@ -81,11 +77,26 @@ public class OtpService {
         validatePurpose(purpose);
         List<VerificationToken> tokens = verificationTokenRepository
                 .findByPurposeAndUsedFalse(purpose);
-        return tokens.stream()
-                .filter(t -> t.getEmail().equals(username))
-                .findFirst()
-                .map(t -> verifyToken(t, otp))
-                .orElse(false);
+        return verifyNewestFirst(tokens, username, otp);
+    }
+
+    /**
+     * Tries all outstanding tokens newest-first so a previously issued
+     * (superseded) code can never shadow the latest one. Email comparison
+     * is case-insensitive to tolerate casing drift between send and verify.
+     */
+    private boolean verifyNewestFirst(List<VerificationToken> tokens, String username, String otp) {
+        List<VerificationToken> mine = tokens.stream()
+                .filter(t -> t.getEmail() != null && t.getEmail().equalsIgnoreCase(username))
+                .filter(t -> !isLocked(t))
+                .sorted((a, b) -> b.getIssuedAt().compareTo(a.getIssuedAt()))
+                .toList();
+        for (VerificationToken t : mine) {
+            if (verifyToken(t, otp)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void validatePurpose(String purpose) {

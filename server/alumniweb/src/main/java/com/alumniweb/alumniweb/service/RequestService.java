@@ -11,4 +11,6 @@ public interface RequestService {
     RequestStatusResponse createNewAlumniRequest(NewAlumniRequest request);
 
     RequestStatusResponse getRequestStatus(Long requestId);
+
+    java.util.List<RequestStatusResponse> getMyRequests();
 }

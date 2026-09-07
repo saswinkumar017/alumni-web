@@ -41,7 +41,19 @@ export async function EventDetail({ slug }: { slug: string }) {
   if (!result.success) notFound();
   const event = result.data;
 
-  return <EventInfoSection event={event} />;
+  return (
+    <EventInfoSection
+      event={{
+        title: event.title,
+        description: event.description,
+        date: new Date(event.date).toLocaleDateString(),
+        location: event.location,
+        image: event.image,
+        maxAttendees: event.maxAttendees,
+        customFields: (event.customFields ?? null) as Record<string, unknown> | null,
+      }}
+    />
+  );
 }
 
 export function EventDetailSkeleton() {
@@ -71,7 +83,21 @@ export async function AlumniEventDetail({ id }: { id: string }) {
   if (!result.success) notFound();
   const event = result.data;
 
-  return <EventInfoSection event={event} headingTag="h1" className="" />;
+  return (
+    <EventInfoSection
+      event={{
+        title: event.title,
+        description: event.description,
+        date: new Date(event.date).toLocaleDateString(),
+        location: event.location,
+        image: event.image,
+        maxAttendees: event.maxAttendees,
+        customFields: (event.customFields ?? null) as Record<string, unknown> | null,
+      }}
+      headingTag="h1"
+      className=""
+    />
+  );
 }
 
 export function AlumniEventDetailSkeleton() {

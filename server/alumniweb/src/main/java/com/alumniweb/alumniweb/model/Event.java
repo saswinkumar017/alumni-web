@@ -65,6 +65,9 @@ public class Event {
     @Column(name = "max_attendees")
     private Integer maxAttendees;
 
+    @Column(name = "custom_fields", columnDefinition = "TEXT")
+    private String customFields;
+
     @Column(name = "created_by")
     private Long createdBy;
 

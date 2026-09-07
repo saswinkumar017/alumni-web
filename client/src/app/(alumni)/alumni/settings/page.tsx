@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { AlumniSettings } from "@/features/settings";
 import { requireAuth } from "@/lib/data/auth";
+import { AlumniSettingsPageClient } from "@/features/settings/AlumniSettingsPageClient";
 
 export const dynamic = "force-dynamic";
 
@@ -13,5 +13,5 @@ export const metadata: Metadata = {
 export default async function AlumniSettingsPage() {
   const user = await requireAuth();
 
-  return <AlumniSettings user={user} />;
+  return <AlumniSettingsPageClient user={user} />;
 }

@@ -121,8 +121,7 @@ export async function verifyEmailApi(token: string): Promise<VerifyResponse> {
   return body as VerifyResponse;
 }
 
-export async function verifyRegistrationOtp(username: string, otp: string): Promise<{ message: string }> {
-  let res: Response;
+export async function verifyRegistrationOtp(username: string, otp: string): Promise<{ message: string }> {  let res: Response;
   try {
     res = await fetch(`${API_BASE}/otp/verify`, {
       method: "POST",
@@ -137,6 +136,29 @@ export async function verifyRegistrationOtp(username: string, otp: string): Prom
 
   if (!res.ok) {
     throw new Error(body.error || "OTP verification failed");
+  }
+
+  return body as { message: string };
+}
+
+export async function resendRegistrationOtp(username: string): Promise<{ message: string }> {
+  let res: Response;
+  try {
+    res = await fetch(`${API_BASE}/otp/send`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, purpose: "REGISTRATION" }),
+    });
+  } catch {
+    throw new Error("Unable to connect to server. Please try again later.");
+  }
+
+  const body = await res.json().catch(() => ({}));
+
+  if (!res.ok) {
+    throw new Error(
+      (body as { error?: string }).error || "Failed to resend OTP"
+    );
   }
 
   return body as { message: string };

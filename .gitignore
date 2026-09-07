@@ -11,3 +11,5 @@ Thumbs.db
 *.log
 
 client/node_modules
+
+.playwright-mcp/

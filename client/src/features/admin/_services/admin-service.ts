@@ -93,10 +93,84 @@ export function connectAdminAuditStream(
 }
 
 // ---- Alumni ----
-export function getAdminAlumni(query?: string, page = 0) {
+export function getAdminAlumni(query?: string, page = 0, filters?: { department?: string; batch?: string; hasAccount?: boolean; verified?: boolean }) {
   const params = new URLSearchParams({ page: String(page), size: "20" });
   if (query) params.set("query", query);
+  if (filters?.department) params.set("department", filters.department);
+  if (filters?.batch) params.set("batch", filters.batch);
+  if (filters?.hasAccount !== undefined) params.set("hasAccount", String(filters.hasAccount));
+  if (filters?.verified !== undefined) params.set("verified", String(filters.verified));
   return adminFetch<{ content: any[]; totalElements: number; totalPages: number }>(`/admin/alumni?${params}`);
+}
+
+export async function importAdminAlumni(file: File) {
+  const token = localStorage.getItem("accessToken");
+  if (!token) handleAuthFailure();
+  const form = new FormData();
+  form.append("file", file);
+  const res = await fetch(`${API_BASE}/admin/alumni/import`, {
+    method: "POST",
+    headers: { ...(token ? { Authorization: `Bearer ${token}` } : {}) },
+    body: form,
+  });
+  if (res.status === 401) handleAuthFailure();
+  if (!res.ok) {
+    const body = await res.json().catch(() => null);
+    throw new Error(body?.message ?? `Import failed (${res.status})`);
+  }
+  return res.json() as Promise<{ totalRows: number; created: number; updated: number; skipped: number; errors: { row: number; registerNumber: string; message: string }[] }>;
+}
+
+// ---- Events ----
+export interface AdminEvent {
+  id: string;
+  slug: string;
+  title: string;
+  description: string | null;
+  date: string;
+  location: string | null;
+  image: string | null;
+  category: string;
+  maxAttendees: number | null;
+  customFields: Record<string, unknown> | null;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface AdminEventInput {
+  slug?: string;
+  title: string;
+  description?: string;
+  venue?: string;
+  eventDate: string;
+  coverImageUrl?: string;
+  status?: "DRAFT" | "PUBLISHED" | "CANCELLED";
+  maxAttendees?: number;
+  customFields?: Record<string, unknown>;
+}
+
+export function getAdminEvents() {
+  return adminFetch<AdminEvent[]>("/admin/events");
+}
+
+export function createAdminEvent(input: AdminEventInput) {
+  return adminFetch<AdminEvent>("/admin/events", {
+    method: "POST",
+    body: JSON.stringify(input),
+  });
+}
+
+export function updateAdminEvent(id: string, input: Partial<AdminEventInput>) {
+  return adminFetch<AdminEvent>(`/admin/events/${id}`, {
+    method: "PUT",
+    body: JSON.stringify(input),
+  });
+}
+
+export function deleteAdminEvent(id: string) {
+  return adminFetch<{ message: string }>(`/admin/events/${id}`, {
+    method: "DELETE",
+  });
 }
 
 // ---- Requests ----

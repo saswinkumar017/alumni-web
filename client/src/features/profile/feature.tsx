@@ -65,18 +65,23 @@ export function ProfileManager(_props: { user: unknown }) {
           </form>
         </section>
 
-        {/* Employment */}
-        <section className="rounded-lg border border-zinc-200 bg-white p-6">
-          <h2 className="text-lg font-bold text-zinc-900">Education</h2>
-          <form onSubmit={(e) => { e.preventDefault(); const f = new FormData(e.currentTarget); handleSave(Object.fromEntries(f.entries()) as Record<string, string>); }} className="mt-4 space-y-4">
-            <Field label="Degree" name="degree" defaultValue={profile?.degree} />
-            <Field label="Department" name="department" defaultValue={profile?.department} />
-            <Field label="Batch" name="batch" defaultValue={profile?.batch} />
-            <Field label="Year of Passing" name="yearOfPassing" defaultValue={profile?.yearOfPassing} />
-            <button type="submit" disabled={saving} className="rounded-lg bg-zinc-900 px-4 py-2 text-sm font-medium text-white hover:bg-zinc-800 disabled:opacity-50">
-              {saving ? "Saving..." : "Save"}
-            </button>
-          </form>
+        {/* Education — admin-managed (read-only) */}
+        <section className="rounded-lg border border-zinc-200 bg-zinc-50 p-6">
+          <div className="flex items-center justify-between">
+            <h2 className="text-lg font-bold text-zinc-900">Education</h2>
+            <span className="rounded-full bg-zinc-200 px-2.5 py-0.5 text-xs font-medium text-zinc-600">
+              Admin managed
+            </span>
+          </div>
+          <p className="mt-1 text-sm text-zinc-500">
+            These details are set when your record is created and can only be changed by an admin.
+          </p>
+          <dl className="mt-4 grid gap-4 sm:grid-cols-2">
+            <ReadonlyField label="Degree" value={profile?.degree} />
+            <ReadonlyField label="Department" value={profile?.department} />
+            <ReadonlyField label="Batch" value={profile?.batch} />
+            <ReadonlyField label="Year of Passing" value={profile?.yearOfPassing} />
+          </dl>
         </section>
 
         <section className="rounded-lg border border-zinc-200 bg-white p-6">
@@ -104,6 +109,15 @@ export function ProfileManager(_props: { user: unknown }) {
           </form>
         </section>
       </div>
+    </div>
+  );
+}
+
+function ReadonlyField({ label, value }: { label: string; value?: string | number }) {
+  return (
+    <div>
+      <dt className="text-xs font-medium uppercase tracking-wider text-zinc-500">{label}</dt>
+      <dd className="mt-1 text-sm font-medium text-zinc-900">{value || "—"}</dd>
     </div>
   );
 }

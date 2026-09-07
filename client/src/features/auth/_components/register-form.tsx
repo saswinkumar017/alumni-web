@@ -6,15 +6,18 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import { registerSchema, type RegisterInput } from "../_validation/auth-schemas";
-import { registerApi, verifyRegistrationOtp } from "../_services/auth-api";
+import { registerApi, verifyRegistrationOtp, resendRegistrationOtp } from "../_services/auth-api";
+import { ProfileCompleteForm } from "./profile-complete-form";
 
 export function RegisterForm() {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  const [step, setStep] = useState<"form" | "otp" | "done">("form");
+  const [step, setStep] = useState<"form" | "otp" | "profile" | "done">("form");
   const [registeredUsername, setRegisteredUsername] = useState("");
   const [otpValue, setOtpValue] = useState("");
   const [otpLoading, setOtpLoading] = useState(false);
+  const [resendLoading, setResendLoading] = useState(false);
+  const [resendCooldown, setResendCooldown] = useState(0);
 
   const {
     register,
@@ -42,6 +45,33 @@ export function RegisterForm() {
     }
   }
 
+  async function handleResendOtp() {
+    if (resendLoading || resendCooldown > 0) return;
+    setResendLoading(true);
+    setError(null);
+    try {
+      const res = await resendRegistrationOtp(registeredUsername);
+      toast.success(res.message || "OTP resent! Check your email.");
+      setOtpValue("");
+      setResendCooldown(30);
+      const timer = window.setInterval(() => {
+        setResendCooldown((c) => {
+          if (c <= 1) {
+            window.clearInterval(timer);
+            return 0;
+          }
+          return c - 1;
+        });
+      }, 1000);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Failed to resend OTP";
+      setError(message);
+      toast.error(message);
+    } finally {
+      setResendLoading(false);
+    }
+  }
+
   async function handleOtpVerify() {
     if (!otpValue || otpValue.length < 4) {
       toast.error("Please enter a valid OTP");
@@ -59,6 +89,10 @@ export function RegisterForm() {
     } finally {
       setOtpLoading(false);
     }
+  }
+
+  if (step === "profile") {
+    return <ProfileCompleteForm />;
   }
 
   if (step === "done") {
@@ -126,17 +160,18 @@ export function RegisterForm() {
           </button>
 
           <p className="text-center text-sm text-zinc-500">
-            Didn't receive a code?{" "}
+            Didn&apos;t receive a code?{" "}
             <button
               type="button"
-              onClick={() => {
-                setOtpValue("");
-                setError(null);
-                toast.info("Resending OTP...");
-              }}
-              className="font-medium text-zinc-900 hover:underline"
+              onClick={handleResendOtp}
+              disabled={resendLoading || resendCooldown > 0}
+              className="font-medium text-zinc-900 hover:underline disabled:opacity-50"
             >
-              Resend
+              {resendLoading
+                ? "Sending..."
+                : resendCooldown > 0
+                  ? `Resend in ${resendCooldown}s`
+                  : "Resend"}
             </button>
           </p>
         </div>
